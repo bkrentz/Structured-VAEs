@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Experiment artifacts
+poisson-latent-gaussian-dynamics/outputs/
+outputs/
+checkpoints/
+runs/
+logs/
+wandb/
+
+# Data
+data/
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
