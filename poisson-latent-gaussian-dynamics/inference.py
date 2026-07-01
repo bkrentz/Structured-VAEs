@@ -7,6 +7,17 @@ from model import LDSParams, GaussianSites
 
 # Package
 class LDSSmoothingPosterior(NamedTuple):
+    """
+    mean = E[z_t | {0:T}],
+    cov = Cov[z_t | {0:T}],
+    cross_cov = Cov[z_{t+1}, z_{t} | {0:T}],
+    filtered_mean = E[z_t | {0:t}],
+    filtered_cov = Cov[z_t | {0:t}],
+    predicted_mean[t] = E[z_t | {0:t-1}], with predicted_mean[0] = m0,
+    predicted_cov[t] = Cov[z_t | {0:t-1}], with predicted_cov[0] = S0,
+    smoother_gain = RTS gain matrix G_t for all time steps
+    log_normaliser = sum_t log Z_t for each sequence
+    """
     mean: jnp.ndarray
     cov: jnp.ndarray
     cross_cov: jnp.ndarray
