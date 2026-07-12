@@ -303,7 +303,7 @@ def neural_loss(
 ): 
     params = merge_params(dynamics, neural)
 
-    elbo, aux = batch_free_energy(
+    free_energy, aux = batch_free_energy(
         key,
         model,
         params,
@@ -313,7 +313,7 @@ def neural_loss(
         jitter = jitter,
     )
 
-    return -elbo, aux
+    return -free_energy, aux
 
 
 ### Acutal training loop
@@ -355,7 +355,7 @@ def train_step(
 
 
     ##1. Generalised M-step update for neural network params
-    
+
     # This runs the E-like-step for post quantities in forming the Free Energy, 
     # and then we backprop through the Kalman Smoothing to get grads w.r.t recognition nwk params
     (loss, aux), grads = jax.value_and_grad(
@@ -430,6 +430,7 @@ def fit_model(
     dynamics_step_size = 0.05, 
     jitter = 1e-6,
     log_every = 50,
+    verbose = True,
 ):
     """
     Fit the point-estimate Poisson LDS-SVAE using minibatch variational EM.
@@ -504,13 +505,20 @@ def fit_model(
             metrics = {name: float(value) for name, value in metrics.items()}
             metrics["step"] = step
             history.append(metrics)
+            if verbose:
+                print(
+                    "step "
+                    f"{step:04d} | "
+                    f"free_energy {metrics['free_energy']:.3f} | "
+                    f"ll {metrics['mean_expected_log_likelihood']:.3f} | "
+                    f"kl {metrics['mean_kl']:.3f}",
+                    flush = True,
+                )
 
     # extract the fitted parameters
     fitted_params = get_params_from_state(state, get_neural_params)
 
     return fitted_params, state, history
-
-
 
 
 

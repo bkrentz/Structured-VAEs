@@ -16,7 +16,7 @@ env/
 .ipynb_checkpoints/
 
 # Experiment artifacts
-poisson-latent-gaussian-dynamics/outputs/
+Forecasting/outputs/
 outputs/
 checkpoints/
 runs/
