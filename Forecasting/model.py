@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import NamedTuple
+from typing import Any, NamedTuple, TYPE_CHECKING
 
 import jax
 import jax.numpy as jnp
@@ -9,6 +9,9 @@ from jax.scipy.special import gammaln
 
 from data import make_damped_rotation
 from utils import Array, _glorot, _log_variance_parameter, _softplus_inverse
+
+if TYPE_CHECKING:
+    from train import BayesianTrainingConfig
 
 
 ## Model settings

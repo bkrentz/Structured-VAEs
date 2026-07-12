@@ -1,13 +1,16 @@
 from __future__ import annotations
 
-from typing import Any, Mapping
+from typing import Any, Mapping, TYPE_CHECKING
 
 import jax
 import jax.numpy as jnp
 
 from inference import GaussianPosterior, gaussian_row_covariance, infer_bayesian_posterior, infer_point_posterior, posterior_second_moments, sample_gaussian_trajectories
-from model import BayesianNeuralParams, DecoderTailParams, DiagonalGaussianPosterior, GaussianRowPosterior, ModelConfig, NoiseParams, PointDynamicsParams, PointNeuralParams, decode_log_rates_bayesian, decode_log_rates_point, poisson_log_prob_from_log_rate, recognise
+from model import BayesianNeuralParams, DiagonalGaussianPosterior, GaussianRowPosterior, ModelConfig, NoiseParams, PointDynamicsParams, PointNeuralParams, decode_log_rates_bayesian, decode_log_rates_point, poisson_log_prob_from_log_rate, recognise
 from utils import Array, LOG_2PI, _actual_variance, _logdet_spd, _symmetrise
+
+if TYPE_CHECKING:
+    from train import BayesianTrainingConfig
 
 
 ## Free energy terms
