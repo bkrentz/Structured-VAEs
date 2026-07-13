@@ -1,8 +1,8 @@
 # Structured VAEs
 
-`Forecasting/` is the main count-forecasting experiment. `Practice/` is the smaller latent-dynamics recovery warm-up.
+`Forecasting/` is where I implement different flavours of Structured VAE to forecast neural spikes driven by underlying dynamics. `Practice/` is a lightweight implentation where I simply try to recover the latent dynamics
 
-Start with the notebooks.
+Please look to the notebooks for more information. 
 
 ## Forecasting Experiments
 
