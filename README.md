@@ -2,7 +2,7 @@
 
 `Forecasting/` is where I implement different flavours of Structured VAE to forecast neural spikes driven by underlying dynamics. `Practice/` is a lightweight implentation where I simply try to recover the latent dynamics
 
-Please look to the notebooks for more information. 
+Please see the [forecasting workbook](./Forecasting/structured_svae_forecasting.ipynb) for the main project.
 
 ## Forecasting Experiments
 
